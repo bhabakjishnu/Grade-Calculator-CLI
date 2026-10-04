@@ -8,6 +8,13 @@
 
 A lightweight, robust, interactive Command Line Interface (CLI) Grade Calculator built with **Node.js** and designed exclusively around **ES6 fundamentals**.
 
+### 🛠️ Tech Stack
+
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![JavaScript (ES6+)](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+
 ---
 
 ## ✨ Features
@@ -30,6 +37,32 @@ A lightweight, robust, interactive Command Line Interface (CLI) Grade Calculator
 | **60.0 – 69.9** | **D** | *Needs improvement to meet passing standards.* |
 | **0.0 – 59.9** | **F** | *Failing grade. Significant improvement required.* |
 | *Out of Range / Non-numeric* | **N/A** | *Validation error message prompting for range 0–100.* |
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TD
+    subgraph CLI ["CLI Interface (index.js)"]
+        A["User Input: node index.js"] --> B["node:readline/promises Prompt"]
+        B --> C["Capture Raw Score String"]
+    end
+
+    subgraph Core ["Core Grading Engine (src/gradeCalculator.js)"]
+        C --> D["Sanitize & Parse Input"]
+        D --> E{"validateScore(score)"}
+        E -- "Invalid (NaN / < 0 / > 100)" --> F["Generate Validation Error Message"]
+        E -- "Valid (0 - 100)" --> G["getGradeDetails(score) via Chained Ternaries"]
+        G --> H["Assemble Result Object (Grade + Feedback)"]
+    end
+
+    subgraph Output ["Terminal Output"]
+        F --> I["Format Message with Template Literals"]
+        H --> I
+        I --> J["Display Result Banner & Close Stream"]
+    end
+```
 
 ---
 
