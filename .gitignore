@@ -41,15 +41,8 @@ TODO.md
 tasks.md
 notes.md
 scratch/
-.agents/plans/
 
-# Agent caches and logs
+# Agent directories and tools
 .gemini/
-.agents/**/cache/
-.agents/**/*.log
+.agents/
 
-# Software engineering standards (explicitly tracked)
-!.agents/rules/
-!.agents/rules/**
-!.agents/workflows/
-!.agents/workflows/**
