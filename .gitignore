@@ -1,7 +1,7 @@
 # Dependency directories
 node_modules/
 
-# Logs
+# Logs and Debug
 logs/
 *.log
 npm-debug.log*
@@ -11,11 +11,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
 
 # Diagnostic / Coverage
 coverage/
@@ -28,13 +24,32 @@ ehthumbs.db
 desktop.ini
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+.vscode/
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.agents/
-.github/
+
+# Private plans, notes, and task lists
+*plan*.md
+*PLAN*.md
+plans/
+todo.md
+TODO.md
+tasks.md
+notes.md
+scratch/
+.agents/plans/
+
+# Agent caches and logs
+.gemini/
+.agents/**/cache/
+.agents/**/*.log
+
+# Software engineering standards (explicitly tracked)
+!.agents/rules/
+!.agents/rules/**
+!.agents/workflows/
+!.agents/workflows/**
